@@ -1,24 +1,27 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import {View, StyleSheet} from 'react-native';
 
 import {COLORS} from "../../constants";
 
 const Card = (props) => (
-    <Container>
+    <View style={styles.container}>
         {props.children}
-    </Container>
+    </View>
 );
 
-const Container = styled.View`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid ${COLORS.CARD_BORDER};
-  background-color: ${COLORS.CARD_BACKGROUND};
-  border-radius: 5px;
-  padding: 20px;
-  margin: 20px;
-`;
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: COLORS.CARD_BORDER,
+    backgroundColor: COLORS.CARD_BACKGROUND,
+    borderRadius: 5,
+    padding: 20,
+    marginTop: 10
+  }
+});
 
 export default Card;

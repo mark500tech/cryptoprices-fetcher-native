@@ -1,8 +1,8 @@
 import combineReducers from 'combine-reducers';
 
-import {dataReducer} from "./dataReducer";
+import {exchangeItemsReducer} from "./exchangeItemsReducer";
 
 export const rootReducer = combineReducers({
-   data: dataReducer
+  exchangeItems: exchangeItemsReducer
 });
 
