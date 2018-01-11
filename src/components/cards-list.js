@@ -1,6 +1,7 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native'
+import {ScrollView, StyleSheet, View, Text} from 'react-native'
 import Exchange from "./exchange";
+import moment from 'moment';
 
 export default class CardsList extends React.Component {
   renderCards = () => {
@@ -11,16 +12,30 @@ export default class CardsList extends React.Component {
 
 
   render() {
+    const lastUpdate = new moment();
     return (
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={ styles.container }>{ this.renderCards() }</ScrollView>
+      <View>
+        <View style={styles.textContainer}>
+          <Text>
+            Last update: { lastUpdate.format('H:mm:ss') }
+          </Text>
+        </View>
+        <ScrollView
+          showsVerticalScrollIndicator={ false }
+          style={ styles.exchangeItems }>{ this.renderCards() }</ScrollView>
+      </View>
+
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  textContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+
+  exchangeItems: {
     width: '100%',
   }
 });

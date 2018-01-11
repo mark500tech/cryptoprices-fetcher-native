@@ -5,7 +5,7 @@ import {COLORS} from "../constants";
 
 const Exchange = (props) => {
   const {item} = props;
-  const containterStyle = [styles.container,
+  const containterStyle = [styles.exchangeItems,
     {
       borderColor: item.difference > 0 ? COLORS.EXCHANGE_BORDER_GREEN : COLORS.EXCHANGE_BORDER_RED,
       backgroundColor: item.difference > 0 ? COLORS.EXCHANGE_BACKGROUND_GREEN : COLORS.EXCHANGE_BACKGROUND_RED
@@ -39,7 +39,7 @@ const Exchange = (props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  exchangeItems: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

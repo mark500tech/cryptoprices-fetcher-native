@@ -7,22 +7,24 @@ import CardsList from "./cards-list";
 
 class Main extends React.Component {
   componentWillMount() {
-    // this.fetchInterval = setInterval(this.props.fetchExchangeItems, 5000);
-    this.props.fetchExchangeItems();
+    this.fetchInterval = setInterval(this.props.fetchExchangeItems, 5000);
+    // this.props.fetchExchangeItems();
   }
 
   render() {
     const { exchangeItems } = this.props;
     return (
-      <View style={styles.container}>
-        { exchangeItems && <CardsList exchangeItems={ exchangeItems }/> }
+      <View style={styles.exchangeItems}>
+        {
+          exchangeItems && <CardsList exchangeItems={ exchangeItems }/>
+        }
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  exchangeItems: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
@@ -32,7 +34,8 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({exchangeItems}) => ({
-  exchangeItems: exchangeItems.items
+  exchangeItems: exchangeItems.items,
+  loading: exchangeItems.loading
 });
 
 export default connect(mapStateToProps, {

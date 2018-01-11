@@ -1,6 +1,8 @@
 import {FETCH_EXCHANGE_ITEMS_SUCCESS} from "../actions/constants";
 
-const initialState = {};
+const initialState = {
+  loading: false
+};
 
 export const exchangeItemsReducer = (state = initialState, action) => {
   switch (action.type) {

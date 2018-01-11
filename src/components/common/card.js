@@ -4,13 +4,13 @@ import {View, StyleSheet} from 'react-native';
 import {COLORS} from "../../constants";
 
 const Card = (props) => (
-    <View style={styles.container}>
+    <View style={styles.exchangeItems}>
         {props.children}
     </View>
 );
 
 const styles = StyleSheet.create({
-  container: {
+  exchangeItems: {
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
