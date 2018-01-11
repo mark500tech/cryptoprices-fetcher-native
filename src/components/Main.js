@@ -1,44 +1,40 @@
 import React from 'react';
-import styled from 'styled-components/native';
+import {View, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 
-import Card from "./common/card";
-import {fetchDataPending} from "../actions/dataAction";
+import {fetchExchangeItems} from "../actions/exchangeItemsAction";
+import CardsList from "./cards-list";
 
 class Main extends React.Component {
   componentWillMount() {
-    this.props.fetchData();
+    // this.fetchInterval = setInterval(this.props.fetchExchangeItems, 5000);
+    this.props.fetchExchangeItems();
   }
 
   render() {
+    const { exchangeItems } = this.props;
     return (
-      <Container>
-        <Card>
-          <TextWrapper>
-            Hello!
-          </TextWrapper>
-        </Card>
-      </Container>
+      <View style={styles.container}>
+        { exchangeItems && <CardsList exchangeItems={ exchangeItems }/> }
+      </View>
     );
   }
 }
 
-const Container = styled.View`
-  flex: 1;
-  background-color: #fff;
-  align-items: center;
-  justify-content: center;
-  margin: 20px;
-`;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: 20
+  }
+});
 
-const TextWrapper = styled.Text`
-  font-size: 20px;
-`;
-
-const mapStateToProps = ({data}) => ({
-  data: data.exchangeItems
+const mapStateToProps = ({exchangeItems}) => ({
+  exchangeItems: exchangeItems.items
 });
 
 export default connect(mapStateToProps, {
-  fetchData: fetchDataPending
+  fetchExchangeItems
 })(Main);

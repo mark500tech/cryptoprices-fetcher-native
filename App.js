@@ -5,13 +5,13 @@ import thunk from 'redux-thunk';
 import promise from 'redux-promise';
 import {createLogger} from 'redux-logger';
 import {rootReducer} from "./src/reducers/rootReducer";
-import {dataMiddleware} from "./src/middlewares/dataMiddleware";
+import {apiMiddleware} from "./src/middlewares/apiMiddleware";
 import Main from "./src/components/Main";
 
 const logger = createLogger();
 const store = createStore(
   rootReducer,
-  applyMiddleware(dataMiddleware, thunk, promise, logger)
+  applyMiddleware(apiMiddleware, thunk, promise, logger)
 );
 
 export default class App extends React.Component {
